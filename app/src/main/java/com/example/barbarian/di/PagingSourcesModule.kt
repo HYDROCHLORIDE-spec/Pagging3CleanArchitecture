@@ -1,0 +1,19 @@
+package com.example.barbarian.di
+
+import com.example.barbarian.data.local.entities.cat.CatEntity
+import com.example.barbarian.data.network.pagingmediator.BaseRemoteMediator
+import com.example.barbarian.data.network.pagingmediator.CatsRemoteMediator
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.scopes.ViewModelScoped
+
+@Module
+@InstallIn(ViewModelComponent::class)
+abstract class PagingSourcesModule {
+
+    @ViewModelScoped
+    @Binds
+    abstract fun bindCatRemoteMediator(catPagingSource : CatsRemoteMediator) : BaseRemoteMediator<CatEntity>
+}
